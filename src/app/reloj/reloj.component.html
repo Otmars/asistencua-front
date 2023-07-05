@@ -1,32 +1,6 @@
-<div class="contenedor-reloj">
-<div class="clock-container">
-    <div class="clock-col">
-      <p class="clock-day clock-timer">
-      </p>
-      <p class="clock-label">
-        Day
-      </p>
-    </div>
-    <div class="clock-col">
-      <p class="clock-hours clock-timer">
-      </p>
-      <p class="clock-label">
-        Hours
-      </p>
-    </div>
-    <div class="clock-col">
-      <p class="clock-minutes clock-timer">
-      </p>
-      <p class="clock-label">
-        Minutes
-      </p>
-    </div>
-    <div class="clock-col">
-      <p class="clock-seconds clock-timer">
-      </p>
-      <p class="clock-label">
-        Seconds
-      </p>
-    </div>
-  </div>
+
+<div class="reloj flex flex-column align-content-center align-items-center text-center">
+    <p class="font-light text-2xl">{{fecha | date}}<p>
+    <p class="font-bold text-6xl">{{hora | date:'HH:mm:ss a'}}</p>
+
 </div>

@@ -1,23 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-reloj',
   templateUrl: './reloj.component.html',
-  styleUrls: ['./reloj.component.scss']
+  styleUrls: ['./reloj.component.css']
 })
-export class RelojComponent {
+export class RelojComponent implements OnInit {
+  fecha: number = Date.now()
+  hora :any;
   constructor(){
-   document.addEventListener('DOMContentLoaded', () =>
-  requestAnimationFrame(this.updateTime)
-)
+    document.addEventListener('keyup', function() {
+      console.log('keys pressed');
+   });
   }
-   updateTime() {
-    // document.documentElement.style.setProperty('--timer-day', "'" + moment().format("dd") + "'");
-    // document.documentElement.style.setProperty('--timer-hours', "'" + moment().format("k") + "'");
-    // document.documentElement.style.setProperty('--timer-minutes', "'" + moment().format("mm") + "'");
-    // document.documentElement.style.setProperty('--timer-seconds', "'" + moment().format("ss") + "'");
-    // requestAnimationFrame(updateTime);
+  ngOnInit(){
+    this.mostrarHora()
+  }
+ 
+  mostrarHora(){
+    this.hora = new Date();
+    console.log(this.hora);
+    setInterval(()=>{
+      this.hora = new Date();
+    },1000)
   }
 }
-
-

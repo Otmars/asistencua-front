@@ -10,13 +10,20 @@ import { HomeComponent } from './home/home.component';
 import { CardModule } from 'primeng/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RelojComponent } from './reloj/reloj.component';
-
+import { BotonPrincipalComponent } from './boton-principal/boton-principal.component';
+import { ToastModule } from 'primeng/toast';
+import { MessagesModule } from 'primeng/messages';
+import { MessageService } from 'primeng/api';
+import { HistorialComponent } from './historial/historial.component';
+import { TableModule } from 'primeng/table';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RelojComponent
+    RelojComponent,
+    BotonPrincipalComponent,
+    HistorialComponent
   ],
   imports: [
     BrowserModule,
@@ -24,9 +31,12 @@ import { RelojComponent } from './reloj/reloj.component';
     MapsModule,
     ButtonModule,
     CardModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastModule,
+    MessagesModule,
+    TableModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
