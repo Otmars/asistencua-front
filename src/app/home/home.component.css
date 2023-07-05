@@ -21,3 +21,9 @@
     padding: 15px;
     margin: 25px;
 }
+.nombre{
+    background: linear-gradient(180deg,#00dbde,#0464b3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}

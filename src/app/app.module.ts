@@ -16,6 +16,9 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageService } from 'primeng/api';
 import { HistorialComponent } from './historial/historial.component';
 import { TableModule } from 'primeng/table';
+import { DropdownModule } from 'primeng/dropdown';
+import { ListaComponent } from './lista/lista.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +26,8 @@ import { TableModule } from 'primeng/table';
     HomeComponent,
     RelojComponent,
     BotonPrincipalComponent,
-    HistorialComponent
+    HistorialComponent,
+    ListaComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,9 @@ import { TableModule } from 'primeng/table';
     BrowserAnimationsModule,
     ToastModule,
     MessagesModule,
-    TableModule
+    TableModule,
+    DropdownModule,
+    FormsModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

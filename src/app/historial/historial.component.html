@@ -1,20 +1,25 @@
-<p-table [value]="products" styleClass="p-datatable-striped" [tableStyle]="{'min-width': '50rem'}">
-    <ng-template pTemplate="header">
-        <tr>
-            <th>Id. Reg</th>
-            <th>Entrada</th>
-            <th>Salida</th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-product>
-        <tr>
-            <!-- <td>{{product.code}}</td>
+<p-table
+  [value]="products"
+  styleClass="p-datatable-striped"
+  [tableStyle]="{ 'min-width': '10rem' }"
+  [styleClass]="'p-datatable-sm'"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:20%">Id. Reg</th>
+      <th class="text-center">Entrada</th>
+      <th class="text-center">Salida</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-product>
+    <tr class="">
+      <!-- <td>{{product.code}}</td>
             <td>{{product.name}}</td>
             <td>{{product.category}}</td>
             <td>{{product.quantity}}</td> -->
-            <td>1</td>
-            <td>dd:mm:yyyy HH:mm:ss</td>
-        </tr>
-
-    </ng-template>
+      <td class="text-center">1</td>
+      <td class="text-center">dd:mm:yyyy HH:mm:ss</td>
+      <td class="text-center">dd:mm:yyyy HH:mm:ss</td>
+    </tr>
+  </ng-template>
 </p-table>
