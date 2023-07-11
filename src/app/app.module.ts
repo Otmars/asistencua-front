@@ -19,6 +19,7 @@ import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
 import { ListaComponent } from './lista/lista.component';
 import { FormsModule } from '@angular/forms';
+import { AsignaturaListaComponent } from './asignatura-lista/asignatura-lista.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     BotonPrincipalComponent,
     HistorialComponent,
     ListaComponent,
+    AsignaturaListaComponent,
   ],
   imports: [
     BrowserModule,

@@ -25,18 +25,30 @@ export class MapViewComponent implements AfterViewInit {
     });
     map.addControl(
       new mapboxgl.GeolocateControl({
-      positionOptions: {
-      enableHighAccuracy: true
-      },
-      // When active the map will receive updates to the device's location as it changes.
-      trackUserLocation: true,
-      // Draw an arrow next to the location dot to indicate which direction the device is heading.
-      showUserHeading: true
+        positionOptions: {
+          enableHighAccuracy: true,
+        },
+        // When active the map will receive updates to the device's location as it changes.
+        trackUserLocation: true,
+        // Draw an arrow next to the location dot to indicate which direction the device is heading.
+        showUserHeading: true,
+        
       })
-      );
+    );
+    map.addControl(new mapboxgl.NavigationControl());
     const popup = new Popup().setHTML(
       '<h6>Aqui estoy</h6><span>Estoy en este lugar del mundo</span>'
     );
-    new Marker({color:'red'}).setLngLat(this.placesService.useLocation).setPopup(popup).addTo(map)
+    new Marker({ color: 'red' })
+      .setLngLat(this.placesService.useLocation)
+      .setPopup(popup)
+      .addTo(map);
+    console.log(this.placesService.useLocation);
+
+    new Marker({ color: 'blue' })
+      .setLngLat([-68.20076771087692, -16.545924078763516])
+      .setPopup(popup)
+      .addTo(map);
+    map.setCenter([-68.20076771087692, -16.545924078763516]);
   }
 }

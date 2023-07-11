@@ -12,7 +12,7 @@ export class ListaComponent {
 
     ngOnInit() {
         this.countries = [
-            { name: 'Australia', code: 'AU' },
+            { name: 'Australaaaaaaaaaaaaaaaaaia', code: 'AU' },
             { name: 'Brazil', code: 'BR' },
             { name: 'China', code: 'CN' },
             { name: 'Egypt', code: 'EG' },
