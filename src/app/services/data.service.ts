@@ -22,4 +22,12 @@ export class DataService {
   marcar(data:any){
     return this.http.post(this.url+"asistencia",data)
   }
+
+  ultimoRegistro(){
+    return this.http.get(this.url+"asistencia/"+this.getdatostoken().id+"/last")
+  }
+
+  historial(){
+    return this.http.get(this.url+"asistencia/"+this.getdatostoken().id+"")
+  }
 }

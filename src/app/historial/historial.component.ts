@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-historial',
   templateUrl: './historial.component.html',
-  styleUrls: ['./historial.component.css']
+  styleUrls: ['./historial.component.css'],
 })
-export class HistorialComponent {
-  products= [{id:1},{id:2}];
+export class HistorialComponent implements OnInit {
+  constructor(private dataService: DataService) {}
+  ngOnInit(): void {
+    this.dataService.historial().subscribe((res: any) => {
+      console.log(res);
+      this.data = res;
+    });
+  }
+
+  data: any;
 }
