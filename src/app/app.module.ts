@@ -20,6 +20,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ListaComponent } from './lista/lista.component';
 import { FormsModule } from '@angular/forms';
 import { AsignaturaListaComponent } from './asignatura-lista/asignatura-lista.component';
+import {HttpClientModule} from '@angular/common/http'
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,9 +45,11 @@ import { AsignaturaListaComponent } from './asignatura-lista/asignatura-lista.co
     MessagesModule,
     TableModule,
     DropdownModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
+    
   ],
-  providers: [MessageService],
+  providers: [MessageService,JwtHelperService,{provide:JWT_OPTIONS, useValue:JWT_OPTIONS}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

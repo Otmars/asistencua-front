@@ -24,13 +24,13 @@
   <div
     class="scalein animation-delay-400 animation-duration-1000 animation-iteration-1 text-2xl flex flex-row"
   >
-    <p class="flex font-italic">Buena Tardes</p>
-    <p class="flex font-bold pl-2 nombre">Juan Perez</p>
+    <p class="flex font-italic">{{saludo}}</p>
+    <p class="flex font-bold pl-2 nombre">{{nombreusuario}}</p>
   </div>
   <app-reloj></app-reloj>
   <div class="mt-2 mb-3"><app-boton-principal></app-boton-principal></div>
   <div class="flex flex-column align-content-center align-items-center justify-content-center">
-    <div class="flex mb-1 z-2"><app-lista></app-lista></div>
+    <!-- <div class="flex mb-1 z-2"><app-lista></app-lista></div> -->
     <div class="flex z-1"><app-asignatura-lista></app-asignatura-lista></div>
   </div>
   <app-map-screen

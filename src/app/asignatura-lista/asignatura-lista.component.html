@@ -1,23 +1,31 @@
 <div class="card flex justify-content-center">
-    <p-dropdown
-      [options]="countries"
-      [(ngModel)]="selectedCountry"
-      optionLabel="name"
-      [filter]="true"
-      filterBy="name"
-      [showClear]="true"
-      placeholder="Asignatura"
-      [style]="{ width: '70vw' }"
-    >
-      <ng-template pTemplate="selectedItem">
-        <div class="flex align-items-center gap-2" *ngIf="selectedCountry">
-          <div>{{ selectedCountry.name }}</div>
+  <p-dropdown
+    [options]="asignaturas"
+    [(ngModel)]="selectedAsignatura"
+    optionLabel="id"
+    [filter]="true"
+    filterBy="nombre"
+    [showClear]="true"
+    placeholder="Selecciones su clase y hospital"
+    [style]="{ width: '300px' }"
+  >
+    <ng-template pTemplate="selectedItem">
+      <div class="flex align-items-center gap-2" *ngIf="selectedAsignatura">
+        <div>{{ selectedAsignatura.nombre }}</div>
+      </div>
+    </ng-template>
+    <ng-template let-asignatura pTemplate="item">
+      <div class="flex flex-column align-items-start gap-2 max-w-0">
+        <div class="flex">
+          <p class="text-blue-900 pr-1">Asignatura:</p>
+          {{ asignatura.nombre }}
         </div>
-      </ng-template>
-      <ng-template let-country pTemplate="item">
-        <div class="flex align-items-center gap-2">
-          <div>{{ country.name }}</div>
+        <div class="flex">
+          <p class="text-blue-800 pr-1">Paralelo:</p>
+          {{ asignatura.paralelo }}
         </div>
-      </ng-template>
-    </p-dropdown>
-  </div>
+        <div class="flex max-w-0 text-sm">{{ asignatura.hospital.nombre }}</div>
+      </div>
+    </ng-template>
+  </p-dropdown>
+</div>
