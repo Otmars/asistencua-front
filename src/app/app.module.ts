@@ -22,7 +22,9 @@ import { FormsModule } from '@angular/forms';
 import { AsignaturaListaComponent } from './asignatura-lista/asignatura-lista.component';
 import {HttpClientModule} from '@angular/common/http'
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +48,9 @@ import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
     TableModule,
     DropdownModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToggleButtonModule,
+    ConfirmDialogModule
     
   ],
   providers: [MessageService,JwtHelperService,{provide:JWT_OPTIONS, useValue:JWT_OPTIONS}],

@@ -35,10 +35,4 @@ constructor(private jwtHelper:JwtHelperService, private dataService:DataService)
     const tokendecode: any = this.jwtHelper.decodeToken(token); 
     return tokendecode;
   }
-  getAsignatura(){
-    this.dataService.lista_asignaturas(this.iduser).subscribe(res=>{
-      console.log(res);
-      
-    })
-  }
 }

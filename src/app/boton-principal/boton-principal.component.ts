@@ -6,45 +6,177 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService ,ConfirmEventType  } from 'primeng/api';
+import { PlacesService } from '../maps/services';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-boton-principal',
   templateUrl: './boton-principal.component.html',
   styleUrls: ['./boton-principal.component.css'],
-  providers: [MessageService,DatePipe],
+  providers: [MessageService, DatePipe ,ConfirmationService],
 })
 export class BotonPrincipalComponent implements OnInit {
   @ViewChild('Bton') Bton: ElementRef;
   texto: string = 'MARCAR';
-
+  hospital: any;
+  validado: boolean;
+  estadoBoton: boolean;
+  checked: any;
   constructor(
     private render: Renderer2,
     private messageService: MessageService,
-    private datePipe: DatePipe
-  ) {}
-  ngOnInit(): void {}
+    private datePipe: DatePipe,
+    private placesService: PlacesService,
+    private dataService: DataService,
+    private confirmationService: ConfirmationService
+  ) {
+    this.dataService.datosDropdown.subscribe((res: any) => {
+      this.hospital = res.data;
 
-  click() {
-    var date =  this.datePipe.transform(Date.now(), 'HH:mm:ss');
-    var x = 1;
-    const asContainer = this.Bton.nativeElement;
-    this.render.listen(asContainer, 'animationend', (event) => {
-      this.render.removeClass(asContainer, 'active');
+      this.estadoBoton = false;
     });
+  }
+  ngOnInit(): void {
+    this.estadoBoton = true;
+  }
+  loading: boolean = false;
+
+  load() {
+    this.loading = true;
+
     setTimeout(() => {
-      if (this.texto == 'MARCAR') {
-        this.texto = 'SALIDA';
-      } else {
-        this.texto = 'MARCAR';
+      this.loading = false;
+    }, 2000);
+  }
+  location: any;
+
+  // clickdisabled() {
+  //   this.messageService.add({
+  //     severity: 'warn',
+  //     summary: 'Selecione su hospital o aula',
+  //     detail: 'selecione una  de las opciones',
+  //   });
+  // }
+  click() {
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to proceed?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+          this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' });
+      },
+      reject:()=>{
+        console.log("rechazado");
+        
       }
+      
+  });
+    console.log(this.estadoBoton);
+
+    if (this.estadoBoton == true) {
       this.messageService.add({
-        severity: 'success',
-        summary: 'Registro Exitoso',
-        detail: 'La hora de registro es: '+date,
-        sticky: true
+        severity: 'warn',
+        summary: 'Selecione su hospital o aula',
+        detail: 'selecione una  de las opciones',
+        sticky: true,
       });
-    }, 2500);
-    console.log(x++);
+    } else {
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position);
+        this.location = position.coords;
+        this.validado = this.enUbicacion(
+          this.location.latitude,
+          this.location.longitude,
+          this.hospital.hospital.latitud,
+          this.hospital.hospital.longitud
+        );
+        if (this.validado == false) {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'No se encuentra Cerca al Destino',
+            detail: 'Acerquese al destion e intente de nuevo',
+            sticky: true,
+          });
+        } else {
+          const data = {
+            estado: 'Entrada',
+            ubicacion_registro: this.placesService.useLocation,
+            asignatura: { id: this.hospital.id },
+          };
+          this.dataService.marcar(data).subscribe((res) => {
+            console.log(res);
+          });
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Registro Exitoso',
+            detail: 'La hora de registro es: ' + Date.now(),
+            sticky: true,
+          });
+        }
+      });
+      console.log(this.validado);
+
+      // if (this.placesService.useLocation !== undefined) {
+      //   console.log(this.placesService.getUserLocation())
+
+      //   this.enUbicacion(this.placesService.useLocation[1],this.placesService.useLocation[0],this.hospital.hospital.latitud,this.hospital.hospital.longitud)
+      // }
+      // var date = this.datePipe.transform(Date.now(), 'HH:mm:ss');
+      // var x = 1;
+      // const asContainer = this.Bton.nativeElement;
+      // this.render.listen(asContainer, 'animationend', (event) => {
+      //   this.render.removeClass(asContainer, 'active');
+      // });
+      // setTimeout(() => {
+
+      //   if (this.texto == 'MARCAR') {
+      //     this.texto = 'SALIDA';
+      //     const data = {
+      //       estado: 'Entrada',
+      //       ubicacion_registro: this.placesService.useLocation,
+      //       asignatura: { id: this.hospital.id },
+      //     };
+      //     this.dataService.marcar(data).subscribe(res=>{
+      //       console.log(res);
+
+      //     });
+      //   } else {
+      //     this.texto = 'MARCAR';
+      //     const data = {
+      //       estado: 'Salida',
+      //       ubicacion_registro: this.placesService.useLocation,
+      //       asignatura: { id: this.hospital.id },
+      //     };
+      //     this.dataService.marcar(data).subscribe(res=>{
+      //       console.log(res);
+
+      //     });
+      //   }
+      //   // this.messageService.add({
+      //   //   severity: 'success',
+      //   //   summary: 'Registro Exitoso',
+      //   //   detail: 'La hora de registro es: ' + date,
+      //   //   sticky: true,
+      //   // });
+      // }, 2500);
+      // console.log(this.texto);
+      // console.log(this.placesService.useLocation);
+      // console.log(this.hospital);
+    }
+  }
+
+  enUbicacion(lat: number, long: number, lat2: number, long2: number) {
+    console.log(lat, '-----', long);
+    console.log(lat2, '-----', long2);
+    const d: number = Math.sqrt(
+      Math.pow(lat2 - lat, 2) + Math.pow(long2 - long, 2)
+    );
+    if (d <= 0.00020745697925245176) {
+      this.validado = true;
+      return true;
+    }
+    this.validado = false;
+    return false;
   }
 }

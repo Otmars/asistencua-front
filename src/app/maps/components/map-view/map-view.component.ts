@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { PlacesService } from '../../services';
 import mapboxgl, { Marker, Popup } from 'mapbox-gl';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-map-view',
@@ -10,19 +11,31 @@ import mapboxgl, { Marker, Popup } from 'mapbox-gl';
 export class MapViewComponent implements AfterViewInit {
   @ViewChild('mapDiv')
   mapDivElement!: ElementRef;
-  constructor(private placesService: PlacesService) {}
+  constructor(private placesService: PlacesService ,private dataService:DataService) {}
 
   ngAfterViewInit(): void {
     if (!this.placesService.useLocation) {
       throw Error('No hay placeService.userLocation');
     }
-    console.log(this.placesService.useLocation);
+    // console.log(this.placesService.useLocation);
     const map = new mapboxgl.Map({
       container: this.mapDivElement.nativeElement, // container ID
       style: 'mapbox://styles/mapbox/streets-v12', // style URL
       center: this.placesService.useLocation, // starting position [lng, lat]
-      zoom: 14, // starting zoom
+      zoom: 10, // starting zoom
     });
+    this.dataService.lista_asignaturas().subscribe((res:any)=>{
+      for (let i = 0; i < res.length; i++) {
+        const element = res[i];
+        console.log(res[i].hospital.latitud);
+        new Marker({ color: 'blue' })
+      .setLngLat([res[i].hospital.longitud, res[i].hospital.latitud])
+      .setPopup(new Popup().setHTML(
+        '<h3>Acertate para marcar</h3><span>'+res[i].hospital.nombre+'</span>'
+      ))
+      .addTo(map);
+      }
+    })
     map.addControl(
       new mapboxgl.GeolocateControl({
         positionOptions: {
@@ -43,12 +56,7 @@ export class MapViewComponent implements AfterViewInit {
       .setLngLat(this.placesService.useLocation)
       .setPopup(popup)
       .addTo(map);
-    console.log(this.placesService.useLocation);
-
-    new Marker({ color: 'blue' })
-      .setLngLat([-68.20076771087692, -16.545924078763516])
-      .setPopup(popup)
-      .addTo(map);
-    map.setCenter([-68.20076771087692, -16.545924078763516]);
-  }
+      
+    }
+  
 }
