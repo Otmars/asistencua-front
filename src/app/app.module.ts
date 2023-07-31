@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,7 @@ import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ServiceWorkerModule } from '@angular/service-worker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,13 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     FormsModule,
     HttpClientModule,
     ToggleButtonModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
     
   ],
   providers: [MessageService,JwtHelperService,{provide:JWT_OPTIONS, useValue:JWT_OPTIONS}],

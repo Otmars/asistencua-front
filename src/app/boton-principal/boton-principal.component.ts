@@ -117,7 +117,7 @@ export class BotonPrincipalComponent implements OnInit {
                 ubicacion_registro: this.placesService.useLocation,
                 asignatura: { id: this.hospital.id },
               };
-              this.dataService.marcar(data).subscribe((res) => {
+              this.dataService.marcar(data).subscribe((res:any) => {
                 console.log(res);
               });
               this.messageService.add({
