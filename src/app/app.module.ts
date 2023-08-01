@@ -23,9 +23,11 @@ import { AsignaturaListaComponent } from './asignatura-lista/asignatura-lista.co
 import {HttpClientModule} from '@angular/common/http'
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { ToggleButtonModule } from 'primeng/togglebutton';
-
+import { InputTextModule } from 'primeng/inputtext';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { DialogModule } from 'primeng/dialog';
+import { NgOptimizedImage } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +54,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     HttpClientModule,
     ToggleButtonModule,
     ConfirmDialogModule,
+    InputTextModule,
+    DialogModule,
+    NgOptimizedImage,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable

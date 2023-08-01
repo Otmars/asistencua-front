@@ -1,60 +1,75 @@
-<div class="container">
-  <div class="screen">
-    <div class="screen__content">
-      <div
-        class="scalein animation-duration-500 animation-iteration-1 zoom flex flex-row flex-wrap align-items-center justify-content-center card-container yellow-container"
-      >
-        <div class="p-3 m-3 flex align-items-center justify-content-center">
-          <img
-            class="h-9rem w-9rem"
-            src="../../assets/images/logo.png"
-            alt="Logo Medicina"
-          />
-        </div>
+<div class="flex align-items-center align-content-center justify-content-center m-3 max-w-screen">
+  <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6 m">
+    <div class="text-center mb-5">
+      <img
+        src="../../assets/images/logo.png"
+        alt="Image"
+        height="150"
+        class="mb-3"
+      />
+      <div class="text-900 text-3xl font-bold mb-3">SIGEAD</div>
+      <div class="text-900 text-l font-normal mb-3">
+        SISTEMA DE GESTION DE ASISTENCIA DOCENTE
       </div>
 
-      <!-- <form class="login" #f="ngForm" (ngSubmit)="onSubmit(f)"> -->
-        <div class="login">
-        <div class="login__field">
-          <i class="login__icon fa-solid fa-user"></i>
-          <input
-            type="text"
-            class="login__input"
-            placeholder="Correo"
-            [(ngModel)]="username" name="username"
-          />
-        </div>
-        <div class="login__field">
-          <i class="login__icon fa fa-lock"></i>
-          <input
-            type="password"
-            class="login__input"
-            placeholder="Contraseña"
-            [(ngModel)]="password" name="password"
-          />
-          <!-- <input type="text" [(ngModel)]="username" name="username"> -->
-          <!-- <p>{{ username + password}}</p> -->
-        </div>
-        <button (click)="onSubmit()" class="button login__submit">
-          <span class="button__text">Ingresar</span>
-          <i class="button__icon fa fa-chevron-right"></i>
-        </button>
-      <!-- </form> -->
+      <span class="text-600 font-medium line-height-3"
+        >No tienes una cuenta?</span
+      >
+      <a href="https://api.whatsapp.com/send?phone=59168103468&text=Hola%20Quiero%20solicitar%20una%20cuenta%20en%20SIGEAD" class="font-medium no-underline ml-2 text-blue-500 cursor-pointer"
+        >Solicita una Ahora!</a
+      >
     </div>
-      <div class="social-login">
-        <h3>Redes</h3>
-        <div class="social-icons">
-          <a href="#" class="social-login__icon pi pi-instagram"></a>
-          <a href="#" class="social-login__icon pi pi-facebook"></a>
-          <a href="#" class="social-login__icon pi pi-twitter"></a>
-        </div>
+
+    <div>
+      <label for="email1" class="block text-900 font-medium mb-2"
+        >Nombre de usuario</label
+      >
+      <input
+        id="email1"
+        type="text"
+        placeholder="Email address"
+        pInputText
+        class="w-full mb-3"
+        [(ngModel)]="username"
+        name="username"
+      />
+
+      <label for="password1" class="block text-900 font-medium mb-2"
+        >Contraseña
+      </label>
+      <input
+        id="password1"
+        type="password"
+        placeholder="Contraseña"
+        pInputText
+        [(ngModel)]="password"
+        name="password"
+        class="w-full mb-3"
+      />
+
+      <div class="flex align-items-center justify-content-between mb-6">
+        <!-- <div class="flex align-items-center">
+          <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
+          <label for="rememberme1" class="text-900">Remember me</label>
+        </div> -->
+        <a (click)="visible=true"
+          class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer"
+          >¿Cual es mi usuario y Contraseña?</a
+        >
       </div>
-    </div>
-    <div class="screen__background">
-      <span class="screen__background__shape screen__background__shape4"></span>
-      <span class="screen__background__shape screen__background__shape3"></span>
-      <span class="screen__background__shape screen__background__shape2"></span>
-      <span class="screen__background__shape screen__background__shape1"></span>
+
+      <button
+        (click)="onSubmit()"
+        pButton
+        pRipple
+        label="Sign In"
+        icon="pi pi-user"
+        class="w-full"
+      ></button>
     </div>
   </div>
 </div>
+ 
+<p-dialog header="Ayuda" [(visible)]="visible" [style]="{width: '90vw'}" [modal]="true">
+  <img ngSrc="../../assets/images/tutorial.png" height="230" width="400">
+</p-dialog>

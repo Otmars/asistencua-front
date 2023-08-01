@@ -1,7 +1,7 @@
 {
-  "name": "geo",
-  "short_name": "geo",
-  "theme_color": "#1976d2",
+  "name": "SIGEAD",
+  "short_name": "SIGEAD",
+  "theme_color": "#2c7cac",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",

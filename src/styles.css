@@ -19,9 +19,11 @@ body {
   font-family: var(--font-family);
   background: linear-gradient(180deg, #2c7cac, #6086af);
   height: 100vh;
-  overflow: hidden;
-}
 
+}
+body::-webkit-scrollbar{
+  display: none;
+}
 .card {
   /* background: var(--surface-card);
   padding: 2rem;
