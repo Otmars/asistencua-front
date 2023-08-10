@@ -27,7 +27,6 @@ export class MapViewComponent implements AfterViewInit {
     this.dataService.lista_asignaturas().subscribe((res:any)=>{
       for (let i = 0; i < res.length; i++) {
         const element = res[i];
-        console.log(res[i].hospital.latitud);
         new Marker({ color: 'blue' })
       .setLngLat([res[i].hospital.longitud, res[i].hospital.latitud])
       .setPopup(new Popup().setHTML(

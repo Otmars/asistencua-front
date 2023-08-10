@@ -10,7 +10,6 @@ export class HistorialComponent implements OnInit {
   constructor(private dataService: DataService) {}
   ngOnInit(): void {
     this.dataService.historial().subscribe((res: any) => {
-      console.log(res);
       this.data = res;
     });
   }

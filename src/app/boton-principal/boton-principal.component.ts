@@ -39,7 +39,6 @@ export class BotonPrincipalComponent implements OnInit {
   ) {
     this.dataService.datosDropdown.subscribe((res: any) => {
       this.hospital = res.data;
-
       this.estadoBoton = false;
     });
   }
@@ -82,7 +81,7 @@ export class BotonPrincipalComponent implements OnInit {
     }
 
     this.confirmationService.confirm({
-      message: '¿Desea proceder con el registro '+this.ultima_Marca+" a "+this.materia_Actual+" a " +objectDate.toLocaleDateString("es-MX",{ weekday:'long', day:'numeric', month:'long', year:'numeric' }) +"?",
+      message: '¿Desea proceder con el registro '+this.ultima_Marca+" a "+this.hospital.nombre+" a " +objectDate.toLocaleDateString("es-MX",{ weekday:'long', day:'numeric', month:'long', year:'numeric' }) +"?",
       header: 'Confirmacion',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
@@ -96,7 +95,6 @@ export class BotonPrincipalComponent implements OnInit {
           });
         } else {
           navigator.geolocation.getCurrentPosition((position) => {
-            console.log(position);
             this.location = position.coords;
             this.validado = this.enUbicacion(
               this.location.latitude,
@@ -118,7 +116,6 @@ export class BotonPrincipalComponent implements OnInit {
                 asignatura: { id: this.hospital.id },
               };
               this.dataService.marcar(data).subscribe((res:any) => {
-                console.log(res);
               });
               this.messageService.add({
                 severity: 'success',
@@ -128,20 +125,15 @@ export class BotonPrincipalComponent implements OnInit {
               });
             }
           });
-          console.log(this.validado);
           this.cargarUltimoMarca;
         }
       },
       reject: () => {
-        console.log('rechazado');
       },
     });
-    console.log(this.estadoBoton);
   }
 
   enUbicacion(lat: number, long: number, lat2: number, long2: number) {
-    console.log(lat, '-----', long);
-    console.log(lat2, '-----', long2);
     const d: number = Math.sqrt(
       Math.pow(lat2 - lat, 2) + Math.pow(long2 - long, 2)
     );

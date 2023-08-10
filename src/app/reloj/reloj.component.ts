@@ -9,9 +9,9 @@ export class RelojComponent implements OnInit {
   fecha: number = Date.now()
   hora :any;
   constructor(){
-    document.addEventListener('keyup', function() {
-      console.log('keys pressed');
-   });
+  //   document.addEventListener('keyup', function() {
+  //     console.log('keys pressed');
+  //  });
   }
   ngOnInit(){
     this.mostrarHora()

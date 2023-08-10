@@ -21,7 +21,7 @@ export class PlacesService {
           resolve(this.useLocation)
         },
         (err)=>{
-          alert('nose pudo Obtener la geolocalizacion')
+          alert('No se pudo Obtener la geolocalizacion')
           console.log(err);
           reject();
         }
