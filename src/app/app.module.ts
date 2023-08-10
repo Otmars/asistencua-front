@@ -20,7 +20,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ListaComponent } from './lista/lista.component';
 import { FormsModule } from '@angular/forms';
 import { AsignaturaListaComponent } from './asignatura-lista/asignatura-lista.component';
-import {HttpClientModule} from '@angular/common/http'
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { InputTextModule } from 'primeng/inputtext';
@@ -28,6 +28,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { DialogModule } from 'primeng/dialog';
 import { NgOptimizedImage } from '@angular/common';
+import { JwtInterceptorInterceptor } from './jwt-interceptor.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +66,7 @@ import { NgOptimizedImage } from '@angular/common';
     })
     
   ],
-  providers: [MessageService,JwtHelperService,{provide:JWT_OPTIONS, useValue:JWT_OPTIONS}],
+  providers: [MessageService,JwtHelperService,{provide:JWT_OPTIONS, useValue:JWT_OPTIONS},{provide: HTTP_INTERCEPTORS,useClass:JwtInterceptorInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
