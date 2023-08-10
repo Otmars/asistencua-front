@@ -48,13 +48,13 @@ export class MapViewComponent implements AfterViewInit {
       })
     );
     map.addControl(new mapboxgl.NavigationControl());
-    const popup = new Popup().setHTML(
-      '<h6>Aqui estoy</h6><span>Estoy en este lugar del mundo</span>'
-    );
-    new Marker({ color: 'red' })
-      .setLngLat(this.placesService.useLocation)
-      .setPopup(popup)
-      .addTo(map);
+    // const popup = new Popup().setHTML(
+    //   '<h6>Aqui estoy</h6><span>Estoy en este lugar del mundo</span>'
+    // );
+    // new Marker({ color: 'red' })
+    //   .setLngLat(this.placesService.useLocation)
+    //   .setPopup(popup)
+    //   .addTo(map);
       
     }
   

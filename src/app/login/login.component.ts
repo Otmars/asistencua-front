@@ -21,6 +21,6 @@ visible: boolean;
         this.router.navigate(['home'])
       });
   }
-  username: string = 'Otmar_9991405';
-  password: string = '1998-02-10';
+  username: string //= 'Otmar_9991405';
+  password: string //= '1998-02-10';
 }
