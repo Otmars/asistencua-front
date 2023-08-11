@@ -1,17 +1,33 @@
-<div
-  class="card m-8 flex flex-row  justify-content-center w-8 align-items-center"
->
+
+<div class="card m-8 px-3 py-3 md:px-6 md:py-5 lg:px-8">
+  <div><h1 class="flex align-content-center justify-content-center scalein animation-ease-in-out animation-duration-300 mb-7">Panel Administracion SIGEAD</h1></div>
   <div
-    class="col-6 md:col-3 mb-4 px-3 cursor-pointer"
-    routerLink="/admin/usuario"
-  >
-    <span
-      class="p-3 shadow-2 mb-3 inline-block surface-card"
-      style="border-radius: 10px"
-    >
-      <i class="pi pi-users text-4xl text-blue-500"></i>
-    </span>
-    <div class="text-900 text-xl mb-3 font-medium">Usuarios</div>
-    <span class="text-700 line-height-3">Administre usuarios</span>
+    class="grid text-center scalein animation-ease-in-out animation-duration-500"
+  > 
+  
+    <div class="col-6 md:col-3 mb-4 px-3" routerLink="/admin/usuario">
+      <span
+        class="p-3 shadow-2 mb-3 inline-block surface-card"
+        style="border-radius: 10px"
+      >
+        <i class="pi pi-check-circle text-4xl text-blue-500"></i>
+      </span>
+      <div class="text-900 text-xl mb-2 font-medium">Usuarios</div>
+      <span class="text-700 line-height-"
+        >Crea Edita y elimina usuarios</span
+      >
+    </div>
+    <div class="col-6 md:col-3 mb-4 px-3" routerLink="/admin/asignatura">
+      <span
+        class="p-3 shadow-2 mb-3 inline-block surface-card"
+        style="border-radius: 10px"
+      >
+        <i class="pi pi-check-circle text-4xl text-blue-500"></i>
+      </span>
+      <div class="text-900 text-xl mb-2 font-medium">Asignatura</div>
+      <span class="text-700 line-height-"
+        >Administra las asignaturas</span
+      >
+    </div>
   </div>
 </div>

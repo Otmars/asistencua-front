@@ -16,11 +16,15 @@ import { InputTextModule } from 'primeng/inputtext';
 import localeMX from '@angular/common/locales/es-BO'
 registerLocaleData(localeMX)
 import { InputMaskModule } from 'primeng/inputmask';
+import { AsignaturasComponent } from './asignaturas/asignaturas.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
 @NgModule({
   declarations: [
     UsuarioComponent,
     HospitalesComponent,
     DashboardComponent,
+    AsignaturasComponent,
     
 
   ],
@@ -34,7 +38,9 @@ import { InputMaskModule } from 'primeng/inputmask';
     ReactiveFormsModule,
     InputNumberModule,
     InputTextModule,
-    InputMaskModule
+    InputMaskModule,
+    DropdownModule,
+    CalendarModule
   ],
   providers:[MessageService,
     ConfirmationService,{provide:LOCALE_ID , useValue: 'es-BO'}, {provide:LocationStrategy,useClass:HashLocationStrategy},]
