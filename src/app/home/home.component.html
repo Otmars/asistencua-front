@@ -33,8 +33,8 @@
         <p class="flex font-italic">{{ saludo }}</p>
         <p class="flex font-bold pl-2 nombre">{{ nombreusuario }}</p>
       </div>
-
-      <i class="pi pi-sign-out flex cursor-pointer" (onClick)="cerrarSesion()"></i>
+      <p-button icon=" pi pi-sign-out"  class="card" styleClass="p-button-raised p-button-text" (onClick)="cerrarSesion()"></p-button>
+      <!-- <i class="pi pi-sign-out flex cursor-pointer" (onClick)="cerrarSesion()"></i> -->
     </div>
     <app-reloj></app-reloj>
     <div class="mt-2 mb-3"><app-boton-principal></app-boton-principal></div>
