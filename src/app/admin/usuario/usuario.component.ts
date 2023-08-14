@@ -125,14 +125,14 @@ export class UsuarioComponent implements OnInit {
   }
   initForm(): FormGroup {
     return this.fb.group({
-      nombres: ['Juan Pedro', [Validators.required]],
-      apellidoPaterno: ['Perez', [Validators.required]],
-      apellidoMaterno: ['Mamani', [Validators.required]],
-      email: ['Juan@mail.com', [Validators.required, Validators.email]],
-      telefono: [12346578, [Validators.required]],
-      direccion: ['C/ vereda n°100'],
+      nombres: ['', [Validators.required]],
+      apellidoPaterno: ['', [Validators.required]],
+      apellidoMaterno: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      telefono: [, [Validators.required]],
+      direccion: [''],
       ci: [12345678, [Validators.required]],
-      fnacimiento: ['12/12/1212', [Validators.required]],
+      fnacimiento: ['', [Validators.required]],
     });
   }
 
