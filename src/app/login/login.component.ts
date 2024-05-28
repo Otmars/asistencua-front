@@ -12,11 +12,10 @@ export class LoginComponent {
 visible: boolean;
   constructor(private authservice: AuthService, private router:Router) {}
   onSubmit() {
-    console.log(this.username, this.password);
     this.authservice
       .singIn({ username: this.username, password: this.password })
       .subscribe((res:any) => {
-        console.log(res);
+
         localStorage.setItem('token', res.token);
         this.router.navigate(['home'])
       });

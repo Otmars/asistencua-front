@@ -19,12 +19,14 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { AsignaturasComponent } from './asignaturas/asignaturas.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
+import { AsistenciasComponent } from './asistencias/asistencias.component';
 @NgModule({
   declarations: [
     UsuarioComponent,
     HospitalesComponent,
     DashboardComponent,
     AsignaturasComponent,
+    AsistenciasComponent,
     
 
   ],
