@@ -15,7 +15,7 @@
       <p-button
         icon="pi pi-plus"
         styleClass="p-button-success"
-        (click)="crearnuevo()"
+        (click)="crearnuevo(); this.docenteForm.reset()"
       ></p-button>
     </div>
     <div class="mx-1">
@@ -60,10 +60,10 @@
         <th pSortableColumn="iduser.ci">
           Carnet Identidad <p-sortIcon field="iduser.ci"></p-sortIcon>
         </th>
-        <th style="width:10%">Correo</th>
-        <th>Telefono</th>
+        <!-- <th style="width:10%">Correo</th> -->
+        <!-- <th>Telefono</th>
         <th>Direccion</th>
-        <th>Fecha de nacimiento</th>
+        <th>Fecha de nacimiento</th> -->
         <th>Fecha de alta</th>
         <th>Acciones</th>
       </tr>
@@ -191,13 +191,13 @@
           <span class="p-column-title font-semibold">C.I.</span>
           {{ docente.iduser.ci }}
         </td>
-        <td class="text-sm">
+        <!-- <td class="text-sm">
           <span class="p-column-title font-semibold">Correo</span>
           {{ serpararcorreo(docente.iduser.email)[0]+"@"  }}
           <br>
           {{ serpararcorreo(docente.iduser.email)[1]  }}
-        </td>
-        <td>
+        </td> -->
+        <!-- <td>
           <span class="p-column-title font-semibold">Telefono</span>
           {{ docente.iduser.telefono }}
         </td>
@@ -208,7 +208,7 @@
         <td>
           <span class="p-column-title font-semibold">Fecha de nacimiento</span>
           {{ docente.iduser.fnacimiento | date}}
-        </td>
+        </td> -->
         <td>
           <span class="p-column-title font-semibold">Fecha de Alta</span>
           {{ docente.iduser.createdAt | date }}
@@ -309,10 +309,10 @@
         <small
           class="p-error"
           *ngIf="docenteForm.get('ci')?.touched && docenteForm.get('ci')?.errors?.['required']"
-          >Telefono is required.</small
+          >Carnet is required.</small
         >
       </div>
-      <div class="field">
+      <!-- <div class="field">
         <label for="email">Correo</label>
         <input
           type="email"
@@ -385,7 +385,7 @@
           >Fecha de nacimiento is required.</small
         >
       </div>
-      <div>{{docenteForm.getError| json}}</div>
+      <div>{{docenteForm.getError| json}}</div> -->
     </ng-template>
 
     <ng-template pTemplate="footer">

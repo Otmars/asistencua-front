@@ -64,9 +64,9 @@ export class UsuarioComponent implements OnInit {
 
   guardarDocente() {
     var nuevoDocente = this.docenteForm.value;
-    nuevoDocente.fnacimiento = this.cambiarFormatoFecha(
-      this.docenteForm.value.fnacimiento
-    );
+    // nuevoDocente.fnacimiento = this.cambiarFormatoFecha(
+    //   this.docenteForm.value.fnacimiento
+    // );
     delete nuevoDocente.id;
     nuevoDocente.rol = 1;
     this.docenteService.postDocente(nuevoDocente).subscribe((res) => {
@@ -115,9 +115,9 @@ export class UsuarioComponent implements OnInit {
       apellidoMaterno: user.apellidoMaterno,
       email: user.email,
       ci: user.ci,
-      telefono: user.telefono,
-      direccion: user.direccion,
-      fnacimiento: user.fnacimiento,
+      // telefono: user.telefono,
+      // direccion: user.direccion,
+      // fnacimiento: user.fnacimiento,
     });
   }
   eliminar() {
@@ -128,11 +128,11 @@ export class UsuarioComponent implements OnInit {
       nombres: ['', [Validators.required]],
       apellidoPaterno: ['', [Validators.required]],
       apellidoMaterno: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      telefono: [, [Validators.required]],
-      direccion: [''],
+      // email: ['', [Validators.required, Validators.email]],
+      // telefono: [, [Validators.required]],
+      // direccion: [''],
       ci: [12345678, [Validators.required]],
-      fnacimiento: ['', [Validators.required]],
+      // fnacimiento: ['', [Validators.required]],
     });
   }
 
